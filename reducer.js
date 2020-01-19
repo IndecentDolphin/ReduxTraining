@@ -1,6 +1,11 @@
 import { VisibilityFilters, SET_VISIBILITY_FILTER, ADD_TODO, TOGGLE_TODO } from './actions'
+import { combineReducers } from redux
 
 const { SHOW_ALL } = VisibilityFilters
+const todoApp = combineReducers({
+    visbilityFilter,
+    todos
+})
 
 
 // Child reducers
@@ -39,11 +44,4 @@ function todos(state = [], action) {
     }
 }
 
-// Parent reducer
-function todoApp(state = {}, action) {
-    
-   return {
-       visibilityFilter: visbilityFilter(state.visibilityFilter, action),
-       todos: todos(state.todos, action)
-   }
-}
+export default todoApp
